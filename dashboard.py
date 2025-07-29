@@ -122,8 +122,8 @@ def get_collateral_composition():
                     "App": pos.app_name,
                     "Network": pos.network,
                     "Position": pos.display_label or pos.symbol,
-                    "Value (USD)": pos.balance_usd,
-                    "Type": pos.position_type
+                    "Value (USD)": pos.balance_usd
+                    #"Type": pos.position_type
                 })
             
             df_positions = pd.DataFrame(positions_data)
