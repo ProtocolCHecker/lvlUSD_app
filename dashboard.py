@@ -328,20 +328,23 @@ def main():
         st.header("Supply Information")
         get_supply_info()
         
+    
+    with tab2:
+
         # aUSDC situation
         st.header("aUSDC Collateral")
         get_aUSDC_situation()
-        
-        # Curve pools
-        st.header("Curve Pools")
-        get_curve_pools()
-    
-    with tab2:
+
         # Collateral composition
         st.header("Collateral Composition")
         get_collateral_composition()
     
     with tab3:
+
+        # Curve pools
+        st.header("Curve Pools")
+        get_curve_pools()
+
         # Pendle markets
         st.header("Pendle Markets")
         
