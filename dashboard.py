@@ -331,14 +331,24 @@ def main():
     
     with tab2:
 
+        # Collateral composition
+        st.header("Collateral Composition")
+        get_collateral_composition()
+
         # aUSDC situation
         st.header("aUSDC Collateral")
         get_aUSDC_situation()
 
-        # Collateral composition
-        st.header("Collateral Composition")
-        get_collateral_composition()
+        # Stakehouse markets
+        st.header("Stakehouse Markets")
+        with st.spinner("Fetching Stakehouse data..."):
+            try:
+                stakehouse_data = get_stakehouse_situation_wrapped()
+                display_market_data(stakehouse_data, "Stakehouse USDC Vaults")
+            except Exception as e:
+                st.error(f"Failed to fetch Stakehouse data: {e}")
     
+
     with tab3:
 
         # Curve pools
@@ -365,14 +375,6 @@ def main():
                 except Exception as e:
                     st.error(f"Failed to fetch slvlUSD Pendle data: {e}")
         
-        # Stakehouse markets
-        st.header("Stakehouse Markets")
-        with st.spinner("Fetching Stakehouse data..."):
-            try:
-                stakehouse_data = get_stakehouse_situation_wrapped()
-                display_market_data(stakehouse_data, "Stakehouse USDC Vaults")
-            except Exception as e:
-                st.error(f"Failed to fetch Stakehouse data: {e}")
 
 if __name__ == "__main__":
     main()
